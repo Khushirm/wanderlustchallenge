@@ -11,15 +11,25 @@
       "static/css/app/page.css",
       "static/chunks/app/page.js"
     ],
-    "/activities/page": [
+    "/profile/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/activities/page.js"
+      "static/chunks/app/profile/page.js"
+    ],
+    "/api/users/profile/route": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/api/users/profile/route.js"
     ],
     "/quests/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/quests/page.js"
+    ],
+    "/api/activities/generate/route": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/api/activities/generate/route.js"
     ]
   }
 }

@@ -1,24 +1,25 @@
-import connectToDatabase from '../../../../utils/db';
-import User from '../../../../models/User';
+import { NextResponse } from "next/server";
+import connectToDatabase from "../../../../utils/db";
+import User from "../../../../models/User";
 
-export default async function handler(req, res) {
-  if (req.method !== 'GET') {
-    return res.status(405).json({ message: 'Method not allowed' });
-  }
-
+export const GET = async (req) => {
   await connectToDatabase();
 
   try {
-    const { username } = req.query;
+    const searchParams = req.nextUrl.searchParams;
+    const username=searchParams.get("username");
     const user = await User.findOne({ username });
 
     if (!user) {
-      return res.status(404).json({ message: 'User not found' });
+      return NextResponse.json({ message: "User not found" }, { status: 404 });
     }
 
-    res.status(200).json(user);
+    return NextResponse.json({ user }, { status: 200 });
   } catch (error) {
-    console.error('Error fetching user profile:', error);
-    res.status(500).json({ message: 'Failed to fetch profile' });
+    console.error("Error fetching user profile:", error);
+    return NextResponse.json(
+      { message: "Failed to fetch profile" },
+      { status: 500 }
+    );
   }
-}
+};

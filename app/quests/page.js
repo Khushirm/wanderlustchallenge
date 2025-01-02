@@ -10,7 +10,7 @@ export default function QuestsPage() {
   useEffect(() => {
     const fetchActivities = async () => {
       try {
-        const response = await axios.get('/api/activities/generate');
+        const response = await axios.post('/api/activities/generate');
         setActivities(response.data);
       } catch (error) {
         console.error('Error fetching activities:', error);
